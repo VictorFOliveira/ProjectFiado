@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectFiado", "ProjectFiado\ProjectFiado.csproj", "{3CA2DDDB-0D21-47E8-8BF7-6A7800975A4E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectFiado.API", "ProjectFiado\ProjectFiado.API.csproj", "{3CA2DDDB-0D21-47E8-8BF7-6A7800975A4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectFiado.Data", "ProjectFiado.Data\ProjectFiado.Data.csproj", "{7BCB54C0-6478-4FC8-9FBD-46202E4A86D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectFiado.Domain", "ProjectFiado.Domain\ProjectFiado.Domain.csproj", "{B00A48EC-1E02-4749-864C-AA4AFAC30DCC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectFiado.Repository", "ProjectFiado.Repository\ProjectFiado.Repository.csproj", "{A382702D-7847-480E-A7B8-C06C325AB9A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectFiado.Services", "ProjectFiado.Services\ProjectFiado.Services.csproj", "{423F9F12-CBDA-4483-AC1E-E1160DA7BFD8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,22 @@ Global
 		{3CA2DDDB-0D21-47E8-8BF7-6A7800975A4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3CA2DDDB-0D21-47E8-8BF7-6A7800975A4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3CA2DDDB-0D21-47E8-8BF7-6A7800975A4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BCB54C0-6478-4FC8-9FBD-46202E4A86D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BCB54C0-6478-4FC8-9FBD-46202E4A86D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BCB54C0-6478-4FC8-9FBD-46202E4A86D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BCB54C0-6478-4FC8-9FBD-46202E4A86D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B00A48EC-1E02-4749-864C-AA4AFAC30DCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B00A48EC-1E02-4749-864C-AA4AFAC30DCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B00A48EC-1E02-4749-864C-AA4AFAC30DCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B00A48EC-1E02-4749-864C-AA4AFAC30DCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A382702D-7847-480E-A7B8-C06C325AB9A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A382702D-7847-480E-A7B8-C06C325AB9A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A382702D-7847-480E-A7B8-C06C325AB9A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A382702D-7847-480E-A7B8-C06C325AB9A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{423F9F12-CBDA-4483-AC1E-E1160DA7BFD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{423F9F12-CBDA-4483-AC1E-E1160DA7BFD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{423F9F12-CBDA-4483-AC1E-E1160DA7BFD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{423F9F12-CBDA-4483-AC1E-E1160DA7BFD8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
