@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ProjectFiado.Models
+namespace ProjectFiado.Domain.Models
 {
     public class StockModel
     {

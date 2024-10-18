@@ -1,5 +1,5 @@
-﻿using ProjectFiado.Models;
-using ProjectFiado.Models.DTOs;
+﻿using ProjectFiado.Domain.Models;
+using ProjectFiado.Domain.Models.DTOs.StockDTOS;
 
 namespace ProjectFiado.Mapper
 {

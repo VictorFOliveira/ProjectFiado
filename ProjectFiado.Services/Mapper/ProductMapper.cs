@@ -1,5 +1,5 @@
-﻿using ProjectFiado.Models;
-using ProjectFiado.Models.DTOs;
+﻿using ProjectFiado.Domain.Models.DTOs.ProductDTOS;
+using ProjectFiado.Models;
 
 namespace ProjectFiado.Mapper
 {
@@ -20,6 +20,7 @@ namespace ProjectFiado.Mapper
         {
             return new ResponseProductDTO
             {
+                Id = productModel.Id,
                 Name = productModel.Name,
                 Price = productModel.Price,
                 Brand = productModel.Brand,

@@ -1,4 +1,4 @@
-﻿namespace ProjectFiado.Models.DTOs
+﻿namespace ProjectFiado.Domain.Models.DTOs.StockDTOS
 {
     public class ResponseStockDTO
     {

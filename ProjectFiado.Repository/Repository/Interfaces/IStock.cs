@@ -1,5 +1,4 @@
-﻿using ProjectFiado.Models;
-using ProjectFiado.Models.DTOs;
+﻿using ProjectFiado.Domain.Models;
 
 namespace ProjectFiado.Repository.Interfaces
 {

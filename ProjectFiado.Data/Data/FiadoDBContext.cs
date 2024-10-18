@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ProjectFiado.Domain.Models;
 using ProjectFiado.Models;
 
 namespace ProjectFiado.Data

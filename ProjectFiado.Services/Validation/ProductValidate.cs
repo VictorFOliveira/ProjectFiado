@@ -1,4 +1,4 @@
-﻿using ProjectFiado.Models.DTOs;
+﻿using ProjectFiado.Domain.Models.DTOs.ProductDTOS;
 
 namespace ProjectFiado.Validation
 {

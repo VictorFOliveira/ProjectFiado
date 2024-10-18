@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProjectFiado.Data;
-using ProjectFiado.Models;
+using ProjectFiado.Domain.Models;
 using ProjectFiado.Repository.Interfaces;
 
 namespace ProjectFiado.Repository
