@@ -1,4 +1,7 @@
-﻿using ProjectFiado.Domain.Models.DTOs.ProductDTOS;
+﻿using ProjectFiado.Domain.Enum;
+using ProjectFiado.Domain.Models.DTOs.ProductDTOS;
+using ProjectFiado.Exceptions;
+using Serilog;
 
 namespace ProjectFiado.Validation
 {
@@ -8,23 +11,34 @@ namespace ProjectFiado.Validation
         {
             if (requestProductDTO == null)
             {
-                throw new ArgumentNullException(nameof(requestProductDTO));
+                Log.Error(ProductErrorMessagesWrapper.ProductEmpty);
+                throw new ProductExceptions(ProductErrorCode.ProductEmpty, ProductErrorMessagesWrapper.ProductEmpty);
             }
 
-            if (requestProductDTO.Name == null)
+            if (string.IsNullOrWhiteSpace(requestProductDTO.Name))
             {
-                throw new ArgumentNullException(nameof(requestProductDTO.Name));
+                Log.Error(ProductErrorMessagesWrapper.ProductEmptyName);
+                throw new ProductExceptions(ProductErrorCode.ProductEmptyName, ProductErrorMessagesWrapper.ProductEmptyName);
             }
 
-            if (requestProductDTO.Description == null)
-            {
-                throw new ArgumentNullException(nameof(requestProductDTO.Description));
-            }
             if (requestProductDTO.Price <= 0)
             {
-                throw new ArgumentException("O preço deve ser maior que zero", nameof(requestProductDTO.Price));
+                Log.Error(ProductErrorMessagesWrapper.InvalidPrice);
+                throw new ProductExceptions(ProductErrorCode.ProductEmptyPrice, ProductErrorMessagesWrapper.InvalidPrice);
             }
 
+            if (string.IsNullOrEmpty(requestProductDTO.Brand))
+            {
+                Log.Error(ProductErrorMessagesWrapper.ProductBrandEmpty);
+                throw new ProductExceptions(ProductErrorCode.ProductEmptyBrand, ProductErrorMessagesWrapper.ProductBrandEmpty);
+            }
+
+            if (string.IsNullOrEmpty(requestProductDTO.Description))
+            {
+                Log.Error(ProductErrorMessagesWrapper.ProductDescriptionEmpty);
+                throw new ProductExceptions(ProductErrorCode.ProductEmptyDescription, ProductErrorMessagesWrapper.ProductDescriptionEmpty);
+            }
         }
     }
 }
+

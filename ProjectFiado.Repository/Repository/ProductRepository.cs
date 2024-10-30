@@ -36,11 +36,6 @@ namespace ProjectFiado.Repository
             return productModel;
         }
 
-        public async Task<ProductModel> GetNameProductAsync(string name)
-        {
-            return await _dbContext.products.FirstOrDefaultAsync(x => x.Name == name);
-        }
-
         public async Task<ProductModel> UpdateProduct(int id, ProductModel updatedProduct)
         {
             var existingProduct = await _dbContext.products.FirstOrDefaultAsync(x => x.Id == id);

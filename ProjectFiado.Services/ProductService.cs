@@ -1,13 +1,10 @@
-﻿using ProjectFiado.Domain.Models.DTOs.ProductDTOS;
+﻿using ProjectFiado.Domain.Enum;
+using ProjectFiado.Domain.Models.DTOs.ProductDTOS;
+using ProjectFiado.Exceptions;
 using ProjectFiado.Mapper;
-using ProjectFiado.Models;
 using ProjectFiado.Repository.Interfaces;
 using ProjectFiado.Validation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Serilog;
 
 namespace ProjectFiado.Services
 {
@@ -29,7 +26,7 @@ namespace ProjectFiado.Services
             var productModel = _mapper.RequestDtoToModel(requestProductDTO);
             var createdProduct = await _productRepository.CreateProduct(productModel);
             var responseProductDTO = _mapper.ProductModelToResponse(createdProduct);
-
+            Log.Information("Product created successfully");
             return responseProductDTO;
         }
 
@@ -39,30 +36,25 @@ namespace ProjectFiado.Services
 
             if (productModelId == null)
             {
-                throw new KeyNotFoundException("Produto não encontrado");
+                Log.Warning(ProductErrorMessagesWrapper.ProductNotFound);
+                throw new ProductExceptions(ProductErrorCode.ProductNotFound, ProductErrorMessagesWrapper.ProductNotFound);
             }
 
             ResponseProductDTO response = _mapper.ProductModelToResponse(productModelId);
             return response;
         }
 
-        public async Task<ResponseProductDTO> GetNameProduct(string name)
-        {
-            var productModelName = await _productRepository.GetNameProductAsync(name);
-
-            if (productModelName == null)
-            {
-                throw new KeyNotFoundException("Produto não encontrado");
-            }
-
-            ResponseProductDTO response = _mapper.ProductModelToResponse(productModelName);
-            return response;
-        }
-
         public async Task<IEnumerable<ResponseProductDTO>> GetAllProducts()
         {
             var products = await _productRepository.GetAllProducts();
+            if(products == null)
+            {
+                Log.Warning(ProductErrorMessagesWrapper.ProductsNotFoundList);
+                return Enumerable.Empty<ResponseProductDTO>();
+            }
             var responseProducts = products.Select(product => _mapper.ProductModelToResponse(product));
+
+            Log.Information("Products retrieved sucessfully");
 
             return responseProducts;
         }
@@ -74,12 +66,12 @@ namespace ProjectFiado.Services
             var existingProduct = await _productRepository.GetById(id);
             if (existingProduct == null)
             {
-                throw new KeyNotFoundException("Produto não encontrado.");
+                Log.Warning(ProductErrorMessagesWrapper.ProductNotFound);
+                throw new ProductExceptions(ProductErrorCode.ProductNotFound, ProductErrorMessagesWrapper.ProductNotFound);
             }
 
             var updatedProductModel = _mapper.RequestDtoToModel(updateRequestProduct);
 
-            // Atualiza as propriedades do produto existente
             existingProduct.Name = updatedProductModel.Name;
             existingProduct.Price = updatedProductModel.Price;
             existingProduct.Description = updatedProductModel.Description;

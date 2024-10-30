@@ -1,4 +1,5 @@
 ﻿using ProjectFiado.Domain.Models;
+using ProjectFiado.Models;
 
 namespace ProjectFiado.Repository.Interfaces
 {
@@ -6,10 +7,10 @@ namespace ProjectFiado.Repository.Interfaces
     { 
         // pensando aqui em outro metodo para implantar 
 
-        Task<StockModel> AddProduct(StockModel stockModel);
-        Task<bool> DeleteProduct(int id);
-        Task<StockModel> GetProductById(int id);
-        Task<StockModel> AlterValidateProduct(int id, StockModel stockModel);
+        Task<StockModel> AddProduct(int id, StockModel stockModel);
+        Task<StockModel> GetById(int id);
+        Task<bool> RemoveStock(int id);
+        Task<StockModel> AlterProduct(int id, int quantity);
 
     }
 }

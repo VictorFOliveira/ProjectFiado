@@ -1,7 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProjectFiado.Domain.Models.DTOs.ProductDTOS;
+using ProjectFiado.Exceptions;
+using ProjectFiado.Models;
 using ProjectFiado.Repository.Interfaces;
 using ProjectFiado.Services;
+using Serilog;
+using System.Collections.Generic;
 
 namespace ProjectFiado.Controllers
 {
@@ -30,7 +34,7 @@ namespace ProjectFiado.Controllers
             }
 
             var createProduct = await _productService.CreateProduct(requestProductDTO);
-            return CreatedAtAction(nameof(GetById), new {id = createProduct.Id}, createProduct);
+            return CreatedAtAction(nameof(GetById), new { id = createProduct.Id }, createProduct);
 
         }
 
@@ -39,6 +43,32 @@ namespace ProjectFiado.Controllers
         {
             var productId = await _productService.GetById(id);
             return Ok(productId);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllProducts()
+        {
+            var products = await _productService.GetAllProducts();
+
+            return Ok(products);
+        }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateProduct([FromBody] RequestProductDTO requestProductDTO, int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                var updateProduct = await _productService.UpdateProduct(id, requestProductDTO);
+                return Ok(updateProduct);
+            }
+            catch (ProductExceptions ex)
+            {
+                Log.Error($"Error while updating product: {ex}");
+                return NotFound(new { Message = ex.Message });
+            }
         }
     }
 }

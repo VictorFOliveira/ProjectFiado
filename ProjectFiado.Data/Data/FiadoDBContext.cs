@@ -15,6 +15,10 @@ namespace ProjectFiado.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<StockModel>()
+                          .HasOne(stock => stock.Product) // Referência ao objeto ProductModel
+                          .WithMany() // Se você tiver uma coleção de StockModel em ProductModel, pode usar .WithMany(product => product.Stocks)
+                          .HasForeignKey(stock => stock.ProductID);
         }
 
     }

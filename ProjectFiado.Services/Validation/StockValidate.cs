@@ -23,7 +23,7 @@ namespace ProjectFiado.Validation
 
             if (requestStockDTO.Validate <= DateOnly.FromDateTime(DateTime.Now))
             {
-                throw new Exception("menor que a data atual");
+                throw new InvalidOperationException("Erro");
             }
         }
     }

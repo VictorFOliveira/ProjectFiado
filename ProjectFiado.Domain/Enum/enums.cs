@@ -21,5 +21,24 @@ namespace ProjectFiado.Domain.Enum
         Deactivate = 2
     }
 
+    public enum ProductErrorCode
+    {
+        ProductEmpty,
+        ProductEmptyName,
+        ProductEmptyPrice,
+        ProductEmptyBrand,
+        ProductEmptyDescription,
+        ProductNotFound
+    }
 
+    public enum StockErrorCode
+    {
+
+    }
+
+    public enum Sucess
+    {
+        Created,
+        Error
+    }
 }

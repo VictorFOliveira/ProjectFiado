@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ProjectFiado.Models;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjectFiado.Domain.Models
 {
@@ -6,7 +8,12 @@ namespace ProjectFiado.Domain.Models
     {
         [Key]
         public int Id { get; set; }
-        public int ProductId { get; set; }
+
+        public int ProductID { get; set; }
+
+        [ForeignKey("ProductID")] 
+        public ProductModel Product { get; set; } 
+
         public int Quantity { get; set; }
         public DateOnly Validate { get; set; }
     }

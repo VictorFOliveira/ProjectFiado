@@ -8,7 +8,6 @@ namespace ProjectFiado.Repository.Interfaces
         Task<ProductModel> UpdateProduct(int id, ProductModel productModel);
         Task<IEnumerable<ProductModel>> GetAllProducts();
         Task<ProductModel> GetById(int id);
-        Task<ProductModel> GetNameProductAsync(string name);
 
     }
 }

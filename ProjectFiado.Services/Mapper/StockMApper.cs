@@ -3,36 +3,39 @@ using ProjectFiado.Domain.Models.DTOs.StockDTOS;
 
 namespace ProjectFiado.Mapper
 {
-    public class StockMApper
+    public class StockMapper
     {
-        public StockModel RequestStockToStockModel(RequestStockDTO requestStockDTO)
-        {
-            if(requestStockDTO == null)
-            {
-                throw new Exception("Nulo");
-            }
-
-            return new StockModel
-            {
-                ProductId = requestStockDTO.ProductId,
-                Quantity = requestStockDTO.Quantity,
-                Validate = requestStockDTO.Validate,
-            };
-        }
 
         public ResponseStockDTO StockModelToResponse(StockModel stockModel)
         {
 
             if (stockModel == null)
             {
-                throw new Exception("nulo");
+                return null;
             }
 
             return new ResponseStockDTO
             {
-                ProductId = stockModel.ProductId,
+                Id = stockModel.Id,
+                ProductId = stockModel.ProductID,
                 Quantity = stockModel.Quantity,
                 Validate = stockModel.Validate,
+            };
+        }
+
+        public StockModel RequestStockToModel(RequestStockDTO requestStock)
+        {
+            if (requestStock == null)
+            {
+                return null;
+            }
+
+            return new StockModel
+            {
+                ProductID = requestStock.ProductId,
+                Quantity = requestStock.Quantity,
+                Validate = requestStock.Validate,
+
             };
         }
     }
